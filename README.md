@@ -33,7 +33,10 @@ Currently, this extension can be installed as an unpacked extension in Google Ch
 2. Ensure you are not actively focused on a text input field.
 3. Press <kbd>D</kbd> to speed up the video by `0.1x`.
 4. Press <kbd>S</kbd> to slow down the video by `0.1x`.
-5. *Alternatively*, click the extension icon in your browser toolbar to use the dedicated control slider.
+5. Press <kbd>Z</kbd> to rewind the video by 10 seconds.
+6. Press <kbd>X</kbd> to forward the video by 10 seconds.
+7. Press <kbd>R</kbd> to instantly reset speed to 1x (press again to restore your original custom speed).
+8. *Alternatively*, click the extension icon in your browser toolbar to use the dedicated control slider.
 
 ## 🛠️ Technology Stack
 

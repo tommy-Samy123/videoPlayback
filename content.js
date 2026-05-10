@@ -1,5 +1,6 @@
 // content.js
 let overlayTimeout;
+let previousSpeed = 1.0;
 
 // Create the overlay elements
 const overlay = document.createElement('div');
@@ -93,16 +94,31 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // Handle 's' and 'd'
-  if (e.key === 's' || e.key === 'd') {
+  // Handle 's', 'd', 'z', 'x', 'r'
+  if (['s', 'd', 'z', 'x', 'r'].includes(e.key.toLowerCase())) {
     const video = getVideo();
     if (!video) return;
 
-    let speed = video.playbackRate;
-    if (e.key === 's') speed -= 0.1;
-    if (e.key === 'd') speed += 0.1;
+    const key = e.key.toLowerCase();
     
-    setSpeed(video, speed);
+    if (key === 'z') {
+      video.currentTime = Math.max(0, video.currentTime - 10);
+    } else if (key === 'x') {
+      // duration might be NaN or 0 if not loaded, fallback appropriately
+      video.currentTime = Math.min(video.duration || video.currentTime + 10, video.currentTime + 10);
+    } else if (key === 'r') {
+      if (video.playbackRate === 1.0) {
+        setSpeed(video, previousSpeed);
+      } else {
+        previousSpeed = video.playbackRate;
+        setSpeed(video, 1.0);
+      }
+    } else {
+      let speed = video.playbackRate;
+      if (key === 's') speed -= 0.1;
+      if (key === 'd') speed += 0.1;
+      setSpeed(video, speed);
+    }
   }
 }, true); // Use capture phase to ensure we catch it before page logic
 
