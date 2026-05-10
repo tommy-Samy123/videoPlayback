@@ -1,0 +1,58 @@
+#video-speed-controller-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2147483647; /* Maximum possible z-index */
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.5s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  pointer-events: auto; /* allow slider interaction */
+}
+
+#video-speed-controller-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#video-speed-controller-slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+}
+
+#video-speed-controller-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  transition: transform 0.1s;
+}
+
+#video-speed-controller-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+#video-speed-controller-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: right;
+  user-select: none;
+}
