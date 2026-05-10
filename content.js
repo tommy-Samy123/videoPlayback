@@ -134,3 +134,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   }
 });
+
+// Enforce 1.0x default speed on new videos
+document.addEventListener('loadedmetadata', (e) => {
+  if (e.target.tagName === 'VIDEO' && !e.target.dataset.speedInitialized) {
+    e.target.playbackRate = 1.0;
+    e.target.dataset.speedInitialized = 'true';
+  }
+}, true);
+
+document.addEventListener('play', (e) => {
+  if (e.target.tagName === 'VIDEO' && !e.target.dataset.speedInitialized) {
+    e.target.playbackRate = 1.0;
+    e.target.dataset.speedInitialized = 'true';
+  }
+}, true);
+
+// Initialize any existing videos
+document.querySelectorAll('video').forEach(v => {
+  if (!v.dataset.speedInitialized) {
+    v.playbackRate = 1.0;
+    v.dataset.speedInitialized = 'true';
+  }
+});
