@@ -3,24 +3,35 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="header">
-    <h1>Playback Speed</h1>
-  </div>
-  <div class="controls">
-    <button id="btn-slower" class="icon-btn">-</button>
-    <div class="slider-container">
-      <input type="range" id="speed-slider" min="0.1" max="4.0" step="0.1" value="1.0">
-      <div id="speed-display">1.0x</div>
-    </div>
-    <button id="btn-faster" class="icon-btn">+</button>
-  </div>
-  <div class="shortcuts">
-    <span>Shortcuts:</span><br>
-    <kbd>S</kbd> Slower &nbsp;&nbsp; <kbd>D</kbd> Faster<br>
-    <kbd>Z</kbd> -10s &nbsp;&nbsp; <kbd>X</kbd> +10s<br>
-    <kbd>R</kbd> Reset/Restore Speed
+  <div class="container">
+    <header class="header">
+      <h1>Playback Speed</h1>
+    </header>
+    
+    <main class="controls">
+      <button id="btn-slower" class="icon-btn" aria-label="Slower">−</button>
+      <div class="slider-container">
+        <input type="range" id="speed-slider" min="0.1" max="4.0" step="0.1" value="1.0">
+        <div id="speed-display">1.0x</div>
+      </div>
+      <button id="btn-faster" class="icon-btn" aria-label="Faster">+</button>
+    </main>
+
+    <section class="shortcuts-section">
+      <h3>Shortcuts</h3>
+      <div class="shortcuts-grid">
+        <div class="shortcut-item"><kbd>S</kbd> <span>Slower</span></div>
+        <div class="shortcut-item"><kbd>D</kbd> <span>Faster</span></div>
+        <div class="shortcut-item"><kbd>Z</kbd> <span>-10s</span></div>
+        <div class="shortcut-item"><kbd>X</kbd> <span>+10s</span></div>
+        <div class="shortcut-item wide"><kbd>R</kbd> <span>Reset Speed</span></div>
+      </div>
+    </section>
   </div>
   <script src="popup.js"></script>
 </body>
